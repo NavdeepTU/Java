@@ -1,4 +1,4 @@
-public class PrimitiveTypeChallenge04 {
+class PrimitiveTypeChallenge04 {
     public static void main(String[] args) {
         // Your challenge is to create a byte variable and set it to any valid byte number,
         // it doesn't matter. Create a short variable and set it to any valid short number.
