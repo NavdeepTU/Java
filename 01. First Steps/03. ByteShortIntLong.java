@@ -1,7 +1,7 @@
 // In java primitive types are the most basic data types.
 // The eight primitive data types in Java are boolean, byte, char, short, int, long, float and double.
 // Consider these types as the building blocks of data manipulation.
-class ByteShortIntLong03 {
+class ByteShortIntLong {
     public static void main(String[] args) {
         // Each primitive type occupies a different amount of memory
 
