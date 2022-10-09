@@ -1,4 +1,4 @@
-class Hello {
+class Hello01 {
     // public is an access modifier
     // void indicates method won't return anything
     // method contains a set of instructions
@@ -7,4 +7,6 @@ class Hello {
     }
 }
 
-// Hello World
+/*
+    Hello World
+ */
