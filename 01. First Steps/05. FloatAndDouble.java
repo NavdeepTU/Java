@@ -27,8 +27,64 @@ class FloatAndDouble {
          */
 
         int myIntValue = 5;
-        float myFloatValue = 5.25f; // (float) 5.25; can also be used
-        double myDoubleValue = 5.25d;
+        float myFloatValue = 5f; // (float) 5.25; can also be used
+        double myDoubleValue = 5d;
         // by default a floating point number is assumed to be double in java
+        System.out.println("MyIntValue= "+myIntValue);
+        System.out.println("MyFloatValue= "+myFloatValue);
+        System.out.println("MyDoubleValue= "+myDoubleValue);
+        /*
+            MyIntValue= 5
+            MyFloatValue= 5.0
+            MyDoubleValue= 5.0
+         */
+
+        // Division
+        myIntValue = 5 / 2;
+        myFloatValue = 5f / 2f; // (float) 5.25; can also be used
+        myDoubleValue = 5d / 2d;
+        System.out.println("MyIntValue= "+myIntValue); // does not handle the remainder
+        System.out.println("MyFloatValue= "+myFloatValue);
+        System.out.println("MyDoubleValue= "+myDoubleValue);
+        /*
+            MyIntValue= 2
+            MyFloatValue= 2.5
+            MyDoubleValue= 2.5
+         */
+
+        myIntValue = 5 / 3;
+        myFloatValue = 5f / 3f; // (float) 5.25; can also be used
+        myDoubleValue = 5d / 3d; // 5.00 / 3.00 will also work
+        System.out.println("MyIntValue= "+myIntValue);
+        System.out.println("MyFloatValue= "+myFloatValue);
+        System.out.println("MyDoubleValue= "+myDoubleValue); // more precise
+        /*
+            MyIntValue= 1
+            MyFloatValue= 1.6666666
+            MyDoubleValue= 1.6666666666666667
+         */
+        // double is more faster than float at chip level
+
+        // Challenge
+        // Convert a given number of pounds to kilograms, 1 pound = 0.45359237 kg
+        double pounds = 23;
+        double kilograms = pounds * 0.45359237;
+        System.out.println("Kg: "+kilograms);
+        /*
+            Kg: 10.43262451
+         */
+
+        double pi = 3.1415927d;
+        double anotherNumber = 3_000_000.4_567_890d;
+        System.out.println(pi);
+        System.out.println(anotherNumber);
+        /*
+            3.1415927
+            3000000.456789
+         */
+
+        // In general float and double are great for general floating point operations.But
+        // both are not great where precise calculations are required. Java has a class called
+        // BigDecimal that overcomes this.
     }
 }
