@@ -20,29 +20,23 @@ public static void main (String[] args) {
 	int operator = sc.nextInt();
 	int result;
 	
-	switch(operator) {
-		case 1:
-			result = a + b;
-			System.out.println(result);
-			break;
-		case 2:
-			result = a - b;
-			System.out.println(result);
-			break;
-		case 3:
-			result = a * b;
-			System.out.println(result);
-			break;
-		case 4:
-			result = a / b;
-			System.out.println(result);
-			break;
-		case 5:
-			result = a % b;
-			System.out.println(result);
-			break;
-		default:
-			System.out.println("Invalid operator input");
+	if(operator == 1) {
+		result = a + b;
+		System.out.println(result);
+	} else if (operator == 2) {
+		result = a - b;
+		System.out.println(result);
+	} else if (operator == 3) {
+		result = a * b;
+		System.out.println(result);
+	} else if (operator == 4) {
+		result = a / b;
+		System.out.println(result);
+	} else if (operator == 5) {
+		result = a % b;
+		System.out.println(result);
+	} else {
+		System.out.println("Invalid operator input");
 	}
 	
 	/*
@@ -91,5 +85,5 @@ public static void main (String[] args) {
 	 	default:
 	 		System.out.println("Invalid Month Number");
 	 }
-}
+	}
 }
