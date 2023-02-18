@@ -66,13 +66,100 @@ class RecursionLevel2 {
 		moveXtoEnd(ch, first, last);
 	}
 	
+	// Remove duplicates in a string
+	public static void removeDuplicates(StringBuilder sb, int idx, int[] arr) {
+		
+		if(idx == sb.length()) {
+			System.out.println(sb);
+			return;
+		}
+		
+		int arrIdx = sb.charAt(idx) - 'a';
+		if(arr[arrIdx] != 0)
+			sb.delete(idx, idx+1);
+		else {
+			arr[arrIdx] = 1;
+			idx += 1;
+		}
+		removeDuplicates(sb, idx, arr);
+		
+	}
+	
+	// Print all the subsequences of a string (Important)
+	public static void printSubsequence(String s, int idx, String subseq) {
+		
+		if(idx == s.length()) {
+			System.out.println(subseq);
+			return;
+		}
+		
+		String includeI = subseq + s.substring(idx, idx+1);
+		printSubsequence(s, idx+1, includeI);
+		printSubsequence(s, idx+1, subseq);
+	}
+	
+	// Print all unique subsequences of a string
+	public static void printUniqueSubsequences(String s, int idx, String subseq, HashSet<String> set) {
+		
+		if(idx == s.length()) {
+			if(set.contains(subseq)) {
+				return;
+			} else {
+				System.out.println(subseq);
+				set.add(subseq);
+				return;
+			}
+		}
+		
+		String includeI = subseq + s.substring(idx, idx+1);
+		printUniqueSubsequences(s, idx+1, includeI, set);
+		printUniqueSubsequences(s, idx+1, subseq, set);
+	}
+	
+	// Print keypad combination
+	public static void printKeypadCombination(String s, int idx, HashMap<Character, String> hm, String currCombination) {
+		
+		// base condition
+		if(idx == s.length()) {
+			System.out.println(currCombination);
+			return;
+		}
+		
+		char c = s.charAt(idx);
+		String charMap = hm.get(c);
+		for(int i=0; i<charMap.length(); i++) {
+			String temp = currCombination;
+			currCombination += charMap.substring(i, i+1);
+			printKeypadCombination(s, idx+1, hm, currCombination);
+			currCombination = temp;
+		}
+	}
+	
 	public static void main (String[] args) {
-		String s = "axbcxxd";
+		String s = "23";
 		char c = 'a';
 		int[] arr = {1, 2, 3, 4, 5, 3};
 		//printRev(s, 0);
 		//printFirstAndLastOcurr(s, 0, c, -1, -1);
 		//isSorted(arr, 1);
-		moveXtoEnd(s.toCharArray(), 0, s.length()-1);
+		//moveXtoEnd(s.toCharArray(), 0, s.length()-1);
+		//StringBuilder sb = new StringBuilder(s);
+		//int[] ar = new int[sb.length()];
+		//removeDuplicates(sb, 0, ar);
+		//printSubsequence(s, 0, "");
+		//HashSet<String> set = new HashSet<String>();
+		//printUniqueSubsequences(s, 0, "", set);
+		HashMap<Character, String> hm = new HashMap<Character, String>();
+		hm.put('0', ".");
+		hm.put('1', "abc");
+		hm.put('2', "def");
+		hm.put('3', "ghi");
+		hm.put('4', "jkl");
+		hm.put('5', "mno");
+		hm.put('6', "pqrs");
+		hm.put('7', "tu");
+		hm.put('8', "vwx");
+		hm.put('9', "yz");
+		printKeypadCombination(s, 0, hm, "");
 	}
 }
