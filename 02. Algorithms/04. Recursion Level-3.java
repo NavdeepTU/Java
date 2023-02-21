@@ -58,11 +58,55 @@ class RecursionLevel3 {
 		return horizontalWays + verticalWays;
 	}
 	
+	// Find the number of ways
+	public static int countWays(int n) {
+		
+		// base conditions
+		if(n == 0)
+			return 0;
+		if(n == 1 || n == 2)
+			return n;
+		
+		// when current guest invited alone
+		int single = countWays(n-1);
+		// when invited in pair
+		int pair = (n-1)*countWays(n-2);
+		
+		return single+pair;
+	}
+	
+	// Print all the subsets of a set of first n natural numbers -> Time complexity -> O(2^n)
+	public static void findSubsets(int n, ArrayList<Integer> subset) {
+		
+		if(n == 0) {
+			printSubsets(subset);
+			return;
+		}
+		
+		// add hoga
+		subset.add(n);
+		findSubsets(n-1, subset);
+		
+		// add nhi hoga
+		subset.remove(subset.size() - 1);
+		findSubsets(n-1, subset);
+	}
+	
+	public static void printSubsets(ArrayList<Integer> subset) {
+		for(int i=0; i<subset.size(); i++) {
+			System.out.print(subset.get(i) + " ");
+		}
+		System.out.println();
+	}
+	
 	public static void main (String[] args) {
 		String s = "abc";
 		//printPermutation(s, 0);
-		int n = 4, m = 2;
+		int n = 3, m = 2;
 		//System.out.println(countPaths(n, m));
-		System.out.println(placeTiles(n, m));
+		//System.out.println(placeTiles(n, m));
+		//System.out.println(countWays(n));
+		ArrayList<Integer> subset = new ArrayList<Integer>();
+		findSubsets(n, subset);
 	}
 }
