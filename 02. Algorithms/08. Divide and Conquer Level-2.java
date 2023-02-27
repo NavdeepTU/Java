@@ -26,7 +26,7 @@ class QuickSort {
 		if(low < high) {
 			int pvtIdx = partition(arr, low, high);
 			quickSort(arr, low, pvtIdx-1);
-			quickSort(arr, pvtIdx, high);
+			quickSort(arr, pvtIdx+1, high);
 		}
 	}
 	
