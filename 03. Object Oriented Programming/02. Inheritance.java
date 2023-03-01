@@ -1,3 +1,6 @@
+import java.util.*; // importing all the classes from java.util package
+// package contains related code
+
 class Shape {
 	String color;
 	

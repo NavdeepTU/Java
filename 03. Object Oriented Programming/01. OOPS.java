@@ -56,7 +56,7 @@ class Student {
 	}
 }
 
-public class OOPS {
+public class OOPS { // if a class is public, it should have same name as that of the file
 	public static void main (String[] args) {
 		Pen pen1 = new Pen();
 		pen1.color = "blue";
