@@ -18,6 +18,7 @@
  * Most problems will be solved using recursion i.e. by dividing into subproblems & making recursive calls on subtrees.
  *
  */
+ import java.util.*;
  
  class Node {
  	int data;
@@ -112,6 +113,42 @@
  		return root;
  	}
  	
+ 	// Print in Range
+ 	public static void printInRange(Node root, int x, int y) {
+ 		if(root == null) {
+ 			return;
+ 		}
+ 		
+ 		if(root.data > x) {
+ 			printInRange(root.left, x, y);
+ 		}
+ 		if(root.data < y) {
+ 			printInRange(root.right, x, y);
+ 		}
+ 		
+ 		if(root.data >= x && root.data <= y) {
+ 			System.out.print(root.data + " ");
+ 		}
+ 	}
+ 	
+ 	// Root to leaf paths
+ 	public static void printRoot2Leaf(Node root, ArrayList<Integer> path) {
+ 		
+ 		if(root == null) {
+ 			return;
+ 		} 
+ 		
+ 		path.add(root.data);
+ 		
+ 		if(root.left == null && root.right == null) { // leaf node
+ 			System.out.println(path);
+ 		} else { // non leaf node
+ 			printRoot2Leaf(root.left, path);
+ 			printRoot2Leaf(root.right, path);
+ 		}
+ 		path.remove(path.size() - 1); // backtrack
+ 	}
+ 	
  	public static void main (String[] args) {
 		int[] values = {8, 5, 3, 1, 4, 6, 10, 11, 14};
 		Node root = null;
@@ -128,7 +165,12 @@
 			System.out.println("Not Found");
 		}
 		
-		delete(root, 5);
-		inorder(root); // 1 3 4 6 8 10 11 14 
+		//delete(root, 5);
+		//inorder(root); // 1 3 4 6 8 10 11 14 
+		
+		printInRange(root, 3, 12); // 4 3 6 5 11 10 8 
+		
+		ArrayList<Integer> paths = new ArrayList<Integer>();
+		printRoot2Leaf(root, paths);
 	}
  }
