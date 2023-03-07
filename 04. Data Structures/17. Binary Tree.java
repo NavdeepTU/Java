@@ -170,6 +170,32 @@ class BinaryTree {
 		TreeInfo myInfo = new TreeInfo(myHeight, mydiam);
 		return myInfo;
 	}
+	
+	// Sum of nodes at Kth level
+	public int sumAtKthLevel(Node root, int k) {
+		int sum = 0;
+		Queue<Node> q = new LinkedList<Node>();
+		q.add(root);
+		q.add(null);
+		
+		while(k >= 1) {
+			Node currNode = q.remove();
+			if(currNode != null && k == 1) {
+				sum += currNode.data;
+			} else if(currNode == null) {
+				q.add(null);
+				k--;
+				continue;
+			}
+			if(currNode.left != null) {
+				q.add(currNode.left);
+			}
+			if(currNode.right != null) {
+				q.add(currNode.right);
+			}
+		}
+		return sum;
+	}
 }
 
 class BinaryTreeMain {
@@ -193,5 +219,6 @@ class BinaryTreeMain {
 		System.out.println(tree.height(root)); // 3
 		System.out.println(tree.diameter(root)); // 5
 		System.out.println(tree.diameter2(root).diam); // 5
+		System.out.println(tree.sumAtKthLevel(root, 3)); // 15
 	}
 }
